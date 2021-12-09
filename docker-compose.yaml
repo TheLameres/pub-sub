@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  artemis:
+    image: quay.io/artemiscloud/activemq-artemis-broker:0.1.1
+    environment:
+      AMQ_USER: admin
+      AMQ_PASSWORD: admin
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+
+#docker run -e AMQ_USER=admin -e AMQ_PASSWORD=admin -p 8161:8161 -p 61616:61616 --name artemis quay.io/artemiscloud/activemq-artemis-broker:0.1.1

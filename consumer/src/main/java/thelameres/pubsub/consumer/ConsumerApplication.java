@@ -7,7 +7,7 @@ import org.springframework.jms.annotation.JmsListener;
 import thelameres.pubssub.shared.models.dto.HelloDto;
 
 import javax.jms.JMSException;
-import javax.jms.Message;
+import java.util.List;
 
 @SpringBootApplication
 public class ConsumerApplication {
@@ -17,9 +17,13 @@ public class ConsumerApplication {
     }
 
     @JmsListener(destination = "queue")
-    public void receive(Message message) throws JMSException {
-        HelloDto body = message.getBody(HelloDto.class);
-        LoggerFactory.getLogger(ConsumerApplication.class).info("Received message from JMS: {}",body);
+    public void receive(HelloDto message) throws JMSException {
+        LoggerFactory.getLogger(ConsumerApplication.class).info("Received message from JMS: {}", message);
+    }
+
+    @JmsListener(destination = "queue")
+    public void receive(List<HelloDto> message) throws JMSException {
+        LoggerFactory.getLogger(ConsumerApplication.class).info("Received message from JMS: {}", message);
     }
 
 }
