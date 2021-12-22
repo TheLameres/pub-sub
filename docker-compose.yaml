@@ -9,5 +9,12 @@ services:
     ports:
       - "8161:8161"
       - "61616:61616"
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+#docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management
 
 #docker run -e AMQ_USER=admin -e AMQ_PASSWORD=admin -p 8161:8161 -p 61616:61616 --name artemis quay.io/artemiscloud/activemq-artemis-broker:0.1.1
